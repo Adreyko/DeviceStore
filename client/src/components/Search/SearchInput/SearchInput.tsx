@@ -36,7 +36,7 @@ const SearchInput = () => {
         background: "#1d1d1d",
         padding: "20px",
         overflow: "scroll",
-        height: "500px",
+        maxHeight: "500px",
         overflowX: "hidden",
       }}
     >
@@ -62,7 +62,7 @@ const SearchInput = () => {
       ) : (
         <Box
           sx={{
-            marginTop: "10%",
+            paddingY: "20px",
             marginX: "30%",
             width: "100%",
             display: "flex",
@@ -71,7 +71,7 @@ const SearchInput = () => {
           <Typography component="h2" variant="h2">
             Try find something...
           </Typography>
-          <CreateIcon sx={{fontSize:"5rem"}} />
+          <CreateIcon sx={{ fontSize: "5rem" }} />
         </Box>
       )}
     </Box>

@@ -11,35 +11,36 @@ import ComponentsContainer from "../Container/ComponentsContainer";
 import Footer from "../Footer/Footer";
 import { fetchDevices } from "@/redux/slices/thunk/fetchData";
 import "react-loading-skeleton/dist/skeleton.css";
+import { IDevice } from "@/interfaces/IDevices";
+import { setDevices } from "@/redux/slices/storeSlice";
 
-
-const Products = () => {
+const Products = ({ devices }: IDevice[] | any) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchDevices());
-  }, [dispatch]);
-
-  const devices = useAppSelector((device) => device.devices.devices);
+    dispatch(setDevices(devices));
+  }, [dispatch, devices]);
+  
   const pathname = usePathname();
 
   const currentPageId = String(pathname).slice(1);
   const [sortedBy, setSortedBy] = useState("");
 
   const currentDevices = devices?.filter(
-    (device) => device.category.toLocaleLowerCase() === currentPageId
+    (device: IDevice) =>
+      device.category.toLocaleLowerCase() === currentPageId.toLocaleLowerCase()
   );
 
-
-
-  const sortedElements = currentDevices.sort((a, b) => {
-    if (sortedBy === "desc")
-      return a.price > b.price ? -1 : a.price < b.price ? 1 : 0;
-    if (sortedBy === "asc")
-      return a.price > b.price ? 1 : a.price < b.price ? -1 : 0;
-    return 0;
-  });
-  const productEl = sortedElements.map((el) => {
+  const sortedElements = currentDevices.sort(
+    (a: { price: number }, b: { price: number }) => {
+      if (sortedBy === "desc")
+        return a.price > b.price ? -1 : a.price < b.price ? 1 : 0;
+      if (sortedBy === "asc")
+        return a.price > b.price ? 1 : a.price < b.price ? -1 : 0;
+      return 0;
+    }
+  );
+  const productEl = sortedElements.map((el: IDevice) => {
     return (
       <Device
         id={el.id}
@@ -58,7 +59,7 @@ const Products = () => {
   return (
     <>
       <ComponentsContainer>
-        <Header  />
+        <Header />
         <Box sx={styles.boxStyles3}>
           <Typography component="div" variant="h5" color={"white"}>
             {currentPageId.toUpperCase()}
@@ -73,7 +74,7 @@ const Products = () => {
             xs={12}
             sx={{ justifyContent: "center", height: "100%" }}
           >
-              {productEl}
+            {productEl}
           </Grid>
         </Box>
         <Footer />

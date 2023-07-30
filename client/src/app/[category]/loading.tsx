@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-
 import ProductLoading from "@/components/ProductLoading/ProductLoading";
 
 const Loading = () => {
@@ -12,3 +11,4 @@ const Loading = () => {
 };
 
 export default Loading;
+  

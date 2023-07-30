@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useAppSelector } from "@/redux/hooks/redux-hook";
 import Product from "./Product";
 import { uid } from "uid";
-import {  Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { styles } from "./styles/muiStyles";
 

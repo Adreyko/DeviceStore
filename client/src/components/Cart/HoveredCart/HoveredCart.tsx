@@ -31,7 +31,7 @@ const HoveredCart = ({ openCart }: any) => {
           border: "1px solid orange",
           overflowY: cartDevices.length ? "scroll" : "hidden",
           padding: "20px",
-          height: cartDevices.length ? "500px" : "50px",
+          maxHeight:'500px',
           overflowX: "hidden",
         }}
       >

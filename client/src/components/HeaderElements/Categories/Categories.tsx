@@ -30,7 +30,7 @@ const Categories = ({
   const headerMenuEl = headerMenu.map((menu) => {
     return (
       <Box key={menu.id}>
-        <Link prefetch={false} href={`/${menu.category.toLowerCase()}`}>
+        <Link prefetch={false} href={`/${menu.category}`}>
           <Typography
             {...bindHover(popupState)}
             variant="h6"
