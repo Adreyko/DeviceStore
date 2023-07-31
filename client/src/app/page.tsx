@@ -1,4 +1,4 @@
-import { getData } from "@/api/getData";
+import { getData } from "@/api/getAllProducts";
 import { setDevices } from "@/redux/slices/storeSlice";
 import { reduxStore } from "@/redux/store/store";
 import SSRMain from "@/components/Main/SSRMain";

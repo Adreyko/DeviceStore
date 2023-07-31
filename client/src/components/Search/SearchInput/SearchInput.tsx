@@ -8,6 +8,7 @@ import CreateIcon from "@mui/icons-material/Create";
 const SearchInput = () => {
   const allDevices = useAppSelector((device) => device.devices.devices);
   const [text, setText] = useState("");
+
   const findElements = allDevices.filter((el) => {
     if (text !== "") {
       return el.name.toLowerCase().includes(text.toLowerCase());
@@ -18,14 +19,14 @@ const SearchInput = () => {
 
   const findedEl = findElements.map((el) => (
     <SearchDevices
-      key={el.id}
+      key={el._id}
       name={el.name}
       image={el.image}
       price={el.price}
       description={el.description}
       category={el.category}
       availability={el.availability}
-      id={el.id}
+      _id={el._id}
       amount={el.amount}
     />
   ));

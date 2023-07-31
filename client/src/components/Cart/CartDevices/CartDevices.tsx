@@ -1,15 +1,20 @@
 import { IDevice } from "@/interfaces/IDevices";
-import { Box, Button, Input, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { Typography } from "@mui/material";
-import useCartController from "@/hooks/useCartConrollert";
 import { cartStyles } from "../CartStyles";
-import CartContacts from "../CartContacts/CartContacts";
 import AmountsButtons from "./Components/AmountsButtons";
 import RemoveButton from "./Components/RemoveButton";
 
-const CartDevices: React.FC<IDevice> = ({ id, image, amount, name, price }) => {
+const CartDevices: React.FC<IDevice> = ({
+  _id,
+  image,
+  amount,
+  name,
+  price,
+}) => {
+  console.log(_id)
   return (
     <Box sx={cartStyles.cartContainer}>
       <Box sx={{ display: "block", alignItems: "center", width: "70%" }}>
@@ -45,11 +50,11 @@ const CartDevices: React.FC<IDevice> = ({ id, image, amount, name, price }) => {
                 {price * amount}$
               </Typography>
             </Box>
-            <AmountsButtons amount={amount} id={id} />
+            <AmountsButtons amount={amount} _id={_id} />
           </Box>
         </Box>
       </Box>
-      <RemoveButton id={id} />
+      <RemoveButton _id={_id} />
     </Box>
   );
 };

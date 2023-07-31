@@ -14,7 +14,7 @@ const Device = ({
   price,
   name,
   image,
-  id,
+  _id,
   availability,
   category,
 }: IDevice) => {
@@ -23,7 +23,7 @@ const Device = ({
 
   const { addToCartHandler, removeFromCartHandler } = useCartController();
   const cart = useAppSelector((cart) => cart.cart.cart);
-  const isInCart = cart.find((el) => el?.id == id);
+  const isInCart = cart.find((el) => el?._id == _id);
 
   return (
     <Grid
@@ -31,7 +31,7 @@ const Device = ({
       item
       lg={3}
       xl={2}
-      key={id}
+      key={_id}
       onMouseEnter={() => setHovered(name)}
       onMouseLeave={() => setHovered(null)}
     >
@@ -51,7 +51,7 @@ const Device = ({
           <>
             {availability ? (
               <>
-                <Link href={`/${category.toLocaleLowerCase()}/${id}`}>
+                <Link href={`/${category.toLocaleLowerCase()}/${_id}`}>
                   <Button sx={styles.button} variant="contained">
                     Detail
                   </Button>
@@ -61,13 +61,13 @@ const Device = ({
                     sx={{ paddingX: "40px" }}
                     color="success"
                     variant="contained"
-                    onClick={() => removeFromCartHandler(id)}
+                    onClick={() => removeFromCartHandler(_id)}
                   >
                     Added
                   </Button>
                 ) : (
                   <Button
-                    onClick={() => addToCartHandler(id)}
+                    onClick={() => addToCartHandler(_id)}
                     color="error"
                     variant="contained"
                   >

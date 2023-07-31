@@ -6,10 +6,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import useCartController from "@/hooks/useCartConrollert";
 
 type PropType = {
-  id: string;
+  _id: string;
   amount: number;
 };
-const AmountsButtons = ({ id, amount }: PropType) => {
+const AmountsButtons = ({ _id, amount }: PropType) => {
   const { addToCartHandler, decreaseAmount } = useCartController();
   const increaseHandler = (devId: string) => {
     addToCartHandler(devId);
@@ -23,7 +23,7 @@ const AmountsButtons = ({ id, amount }: PropType) => {
     <>
       <Box sx={cartStyles.cartAmountBoxStyle}>
         <RemoveIcon
-          onClick={() => decreaseHandler(id)}
+          onClick={() => decreaseHandler(_id)}
           sx={{
             cursor: "pointer",
             border: "1px solid gray",
@@ -34,7 +34,7 @@ const AmountsButtons = ({ id, amount }: PropType) => {
           {amount}
         </Typography>
         <AddIcon
-          onClick={() => increaseHandler(id)}
+          onClick={() => increaseHandler(_id)}
           sx={{
             cursor: "pointer",
             border: "1px solid gray",

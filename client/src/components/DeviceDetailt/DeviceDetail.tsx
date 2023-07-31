@@ -12,17 +12,8 @@ import ColorsComponent from "./ColorsComponent";
 import { uid } from "uid";
 import Footer from "../Footer/Footer";
 import ComponentsContainer from "../Container/ComponentsContainer";
-import { fetchDevices } from "@/redux/slices/thunk/fetchData";
-const DeviceDetail = ({ id }: string | any) => {
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(fetchDevices());
-  }, [dispatch]);
-  const allDevices = useAppSelector((device) => device.devices.devices);
-  const currentDivice: IDevice | undefined = allDevices.find(
-    (el) => el.id === id
-  );
+const DeviceDetail = ({ product }: IDevice | any) => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const colorsEl = colorsTypes.map((color) => (
@@ -42,7 +33,7 @@ const DeviceDetail = ({ id }: string | any) => {
           <Container sx={styles.deviceContainer}>
             <Box sx={{ width: { xl: "100%", sm: "30%", md: "40%" } }}>
               <Image
-                src={`/images/${currentDivice?.image}`}
+                src={`/images/${product?.image}`}
                 alt="device"
                 height={800}
                 width={800}
@@ -52,7 +43,7 @@ const DeviceDetail = ({ id }: string | any) => {
             </Box>
             <Box sx={styles.rightSectionBox}>
               <Typography component="h1" variant="h5">
-                {currentDivice?.name}
+                {product?.name}
               </Typography>
               <Box
                 sx={{
@@ -63,10 +54,10 @@ const DeviceDetail = ({ id }: string | any) => {
               >
                 <Typography
                   component="h6"
-                  variant="h7"
+                  variant="h6"
                   sx={styles.avaibleStyle}
                 >
-                  {currentDivice?.availability ? "Avaible" : "Soon..."}
+                  {product?.availability ? "Avaible" : "Soon..."}
                 </Typography>
               </Box>
               <Typography
@@ -74,9 +65,9 @@ const DeviceDetail = ({ id }: string | any) => {
                 variant="h4"
                 sx={{ paddingY: "20px", borderBottom: "1px solid gray" }}
               >
-                {currentDivice?.price} $
+                {product?.price} $
               </Typography>
-              {currentDivice?.category === "iphones" || "accessory" ? (
+              {product?.category === "iphones" || "accessory" ? (
                 <Typography
                   component="div"
                   variant="h5"
@@ -107,10 +98,10 @@ const DeviceDetail = ({ id }: string | any) => {
               </Typography>
               <Typography
                 component="h4"
-                variant="h7"
+                variant="h6"
                 sx={{ paddingY: "20px", borderBottom: "1px solid gray" }}
               >
-                {currentDivice?.description}
+                {product?.description}
               </Typography>
             </Box>
           </Container>

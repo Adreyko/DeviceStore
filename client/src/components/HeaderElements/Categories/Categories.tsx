@@ -59,7 +59,7 @@ const Categories = ({
 
   const filteredCategoriesEl = filteredCategories?.map((el: IDevice) => (
     <Link
-      href={`/${selectedCategories?.toLocaleLowerCase()}/${el.id}`}
+      href={`/${selectedCategories?.toLocaleLowerCase()}/${el._id}`}
       key={uid()}
     >
       <Typography sx={dropDownStyles}>{el.name}</Typography>

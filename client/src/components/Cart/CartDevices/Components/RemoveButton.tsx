@@ -2,12 +2,14 @@ import React from "react";
 import { Button } from "@mui/material";
 import useCartController from "@/hooks/useCartConrollert";
 import { cartStyles } from "../../CartStyles";
-const RemoveButton = ({ id }: string | any) => {
+const RemoveButton = ({ _id }: string | any) => {
   const { removeFromCartHandler } = useCartController();
+  console.log(_id)
   return (
     <>
+  
       <Button
-        onClick={() => removeFromCartHandler(id)}
+        onClick={() => removeFromCartHandler(_id)}
         sx={cartStyles.cartRemoveButtonStyle}
         color="error"
         variant="contained"

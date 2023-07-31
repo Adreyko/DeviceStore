@@ -25,10 +25,11 @@ const Cart: React.FC = ({ devices }: IDevice[] | any) => {
       accumulator + currentValue.price * currentValue.amount,
     0
   );
+  console.log(cartDevices)
   const cartDevicesEl = cartDevices.map((device) => (
     <CartDevices
-      key={device.id}
-      id={device.id}
+      key={device._id}
+      _id={device._id}
       image={device.image}
       amount={device.amount}
       name={device.name}

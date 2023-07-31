@@ -43,9 +43,9 @@ const Products = ({ devices }: IDevice[] | any) => {
   const productEl = sortedElements.map((el: IDevice) => {
     return (
       <Device
-        id={el.id}
+        _id={el._id}
         availability={el.availability}
-        key={el.id}
+        key={el._id}
         price={el.price}
         name={el.name}
         description={el.description}

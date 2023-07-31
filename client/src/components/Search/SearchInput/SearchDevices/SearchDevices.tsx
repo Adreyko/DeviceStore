@@ -3,15 +3,16 @@ import { Box, Link, Typography } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 const SearchDevices: React.FC<IDevice> = ({
-  id,
+  _id,
   image,
   amount,
   name,
   price,
   category,
 }) => {
+
   return (
-    <Link href={`/${category.toLocaleLowerCase()}/${id}`}>
+    <Link href={`/${category.toLocaleLowerCase()}/${_id}`}>
       <Box
         sx={{
           display: "block",

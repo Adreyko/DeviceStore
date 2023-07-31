@@ -7,11 +7,11 @@ const HoveredCart = ({ openCart }: any) => {
   const cartDevices = useAppSelector((devices) => devices.cart.cart);
   const devicesEl = cartDevices.map((device) => (
     <Devices
-      key={device.id}
+      key={device._id}
       image={device.image}
       name={device.name}
       price={device.price}
-      id={device.id}
+      _id={device._id}
       amount={device.amount}
       description={device.description}
       availability={device.availability}

@@ -2,7 +2,7 @@
 import React from "react";
 
 import Products from "@/components/Products/Products";
-import { getData } from "@/api/getData";
+import { getData } from "@/api/getAllProducts";
 import { reduxStore } from "@/redux/store/store";
 import { setDevices } from "@/redux/slices/storeSlice";
 const Category = async () => {

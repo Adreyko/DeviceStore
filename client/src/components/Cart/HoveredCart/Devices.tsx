@@ -5,7 +5,7 @@ import { cartStyles } from "../CartStyles";
 import AmountsButtons from "../CartDevices/Components/AmountsButtons";
 import Image from "next/image";
 
-const Devices: React.FC<IDevice> = ({ name, id, price, image, amount }) => {
+const Devices: React.FC<IDevice> = ({ name, _id, price, image, amount }) => {
   return (
     <Box sx={cartStyles.cartContainer}>
       <Box sx={{ display: "block", alignItems: "center", width: "70%" }}>

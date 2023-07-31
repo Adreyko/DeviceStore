@@ -5,7 +5,7 @@ export interface IDevice {
   description: string;
   category: string;
   availability: boolean;
-  id: string;
+  _id: string;
   amount:number;
 
 }
