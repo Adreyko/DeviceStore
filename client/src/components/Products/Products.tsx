@@ -9,7 +9,6 @@ import Sort from "./Sort/Sort";
 import Device from "./Product/Product";
 import ComponentsContainer from "../Container/ComponentsContainer";
 import Footer from "../Footer/Footer";
-import { fetchDevices } from "@/redux/slices/thunk/fetchData";
 import "react-loading-skeleton/dist/skeleton.css";
 import { IDevice } from "@/interfaces/IDevices";
 import { setDevices } from "@/redux/slices/storeSlice";
