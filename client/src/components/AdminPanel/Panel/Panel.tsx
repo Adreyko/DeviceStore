@@ -1,3 +1,4 @@
+'use client'
 import { Box, Button, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
@@ -8,6 +9,8 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { handleImageChange } from "@/handlers/handleImageChange";
 import { handleCategoryChange } from "@/handlers/categoryHandle";
 import { handleFormChange } from "@/handlers/formHandler";
+import { imageLoader } from "@/utils/imageloader";
+
 const Panel = () => {
   const [selectedImage, setSelectedImage] = useState<File>()
   const [imagesUrl, setImagesUrl] = useState<string>()
@@ -28,6 +31,7 @@ const Panel = () => {
     console.log(formData, category, selectedImage)
   }
 
+
   return (
     <Box
       sx={{
@@ -39,6 +43,9 @@ const Panel = () => {
         justifyContent: "center",
       }}
     >
+      {/* <Box mt={2} textAlign="center">
+        <Image loader={() => imageLoader("airpodsmax.jpg")} src="me.png" alt='image' height={200} width={300} />
+      </Box> */}
       <Box sx={{ color: "white", background: "#1d1d1d", padding: "50px", display: "flex", flexDirection: 'column', alignItems: 'center', width: '30%' }}>
         <Typography variant="h4">Add some device</Typography>
         <input
@@ -79,7 +86,7 @@ const Panel = () => {
           <MenuItem value={"Other"}>Other</MenuItem>
         </Select>
         <InputLabel className={styles.label} htmlFor='name'>Description</InputLabel>
-        <Input className={styles.input} onChange={(e) => handleFormChange(e as any, setFormData as any)} value={formData.description} name='description' rows={4} multiline maxRows={3} fullWidth inputProps={{ sx: { color: "white" } }} />
+        <Input className={styles.input} onChange={(e) => handleFormChange(e as any, setFormData as any)} value={formData.description} name='description' rows={4} multiline  fullWidth inputProps={{ sx: { color: "white" } }} />
         <Button variant="contained" color="error" component="span" fullWidth sx={{ margin: '20px' }} onClick={confirm}>
           Confirm
         </Button>

@@ -8,6 +8,7 @@ import { styles } from "../styles/muiStyles";
 import { IDevice } from "@/interfaces/IDevices";
 import useCartController from "@/hooks/useCartConrollert";
 import {  useAppSelector } from "@/redux/hooks/redux-hook";
+import { imageLoader } from "@/utils/imageloader";
 
 
 const Device = ({
@@ -38,7 +39,8 @@ const Device = ({
       <Box
         sx={availability ? styles.boxStylesDevice : styles.boxStylesNotAvaible}
       >
-        <Image alt="image" src={`/images/${image}`} width={200} height={200} />
+        <Image alt="image"   loader={() => imageLoader(image)}
+            src={`s3`} width={200} height={200} />
         <Typography component="div" variant="h6">
           {name.length > 30 ? `${name.slice(0, 28)}...` : name}
         </Typography>

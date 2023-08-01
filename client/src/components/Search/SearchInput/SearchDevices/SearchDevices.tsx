@@ -2,6 +2,7 @@ import { IDevice } from "@/interfaces/IDevices";
 import { Box, Link, Typography } from "@mui/material";
 import React from "react";
 import Image from "next/image";
+import { imageLoader } from "@/utils/imageloader";
 const SearchDevices: React.FC<IDevice> = ({
   _id,
   image,
@@ -25,7 +26,8 @@ const SearchDevices: React.FC<IDevice> = ({
         <Box sx={{ display: "flex", alignItems: "center", width: "100%" }}>
           <Box sx={{ width: "100px", height: "100px" }}>
             <Image
-              src={`/images/${image}`}
+              loader={() => imageLoader(image)}
+              src={`s3`}
               alt="cartIcon"
               height={300}
               width={300}

@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import { styles } from "./styles/muiStyles";
+import { imageLoader } from "@/utils/imageloader";
 const Product: React.FC<IDevice> = ({
   image,
   name,
@@ -25,7 +26,8 @@ const Product: React.FC<IDevice> = ({
           }}
         >
           <Image
-            src={`/images/${image}`}
+            loader={() => imageLoader(image)}
+            src={`s3`}
             height={400}
             width={400}
             alt="image"

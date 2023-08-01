@@ -14,7 +14,7 @@ const CarouselComponent: React.FC = () => {
   const devicesEl = devices?.map((dev) => (
     <Product
       key={uid()}
-      id={uid()}
+      _id={uid()}
       name={dev.name}
       price={dev.price}
       description={dev.description}

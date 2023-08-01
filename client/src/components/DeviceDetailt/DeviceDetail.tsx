@@ -12,6 +12,7 @@ import ColorsComponent from "./ColorsComponent";
 import { uid } from "uid";
 import Footer from "../Footer/Footer";
 import ComponentsContainer from "../Container/ComponentsContainer";
+import { imageLoader } from "@/utils/imageloader";
 
 const DeviceDetail = ({ product }: IDevice | any) => {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -33,7 +34,8 @@ const DeviceDetail = ({ product }: IDevice | any) => {
           <Container sx={styles.deviceContainer}>
             <Box sx={{ width: { xl: "100%", sm: "30%", md: "40%" } }}>
               <Image
-                src={`/images/${product?.image}`}
+                loader={() => imageLoader(product.image)}
+                src={`s3`}
                 alt="device"
                 height={800}
                 width={800}
