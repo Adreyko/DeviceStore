@@ -31,13 +31,12 @@ const Panel = () => {
   const confirm = async () => {
     const data = {
       ...formData,
-      image: selectedImage
+      file: selectedImage
     }
     try {
       await postProduct(data)
       setFormData({
         name: '',
-
         price: '',
         description: '',
         category: ''
@@ -67,7 +66,7 @@ const Panel = () => {
           type="file"
           id="select-image"
           style={{ display: "none" }}
-          onChange={(e) => handleImageChange(e, setSelectedImage, setFormData as any, selectedImage)}
+          onChange={(e) => handleImageChange(e, setSelectedImage)}
         />
         <label htmlFor="select-image" style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
           <Button variant="contained" color="primary" component="span" >
@@ -93,11 +92,11 @@ const Panel = () => {
           onChange={(e) => handleCategoryChange(e, setFormData as any)}
           sx={{ color: 'white', border: '1px solid white', borderRadius: '20px' }}
         >
-          <MenuItem value={"Iphones"}>Iphones</MenuItem>
-          <MenuItem value={"Macbook"}>Macbook</MenuItem>
-          <MenuItem value={"AirPods"}>AirPods</MenuItem>
-          <MenuItem value={"Accessory"}>Accessory</MenuItem>
-          <MenuItem value={"Other"}>Other</MenuItem>
+          <MenuItem value={"iphones"}>Iphones</MenuItem>
+          <MenuItem value={"macbook"}>Macbook</MenuItem>
+          <MenuItem value={"airpods"}>AirPods</MenuItem>
+          <MenuItem value={"accessory"}>Accessory</MenuItem>
+          <MenuItem value={"others"}>Other</MenuItem>
         </Select>
         <InputLabel className={styles.label} htmlFor='name'>Description</InputLabel>
         <Input className={styles.input} onChange={(e) => handleFormChange(e as any, setFormData as any)} value={formData.description} name='description' rows={4} multiline fullWidth inputProps={{ sx: { color: "white" } }} />

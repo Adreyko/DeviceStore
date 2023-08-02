@@ -11,6 +11,7 @@ import {
 import { ProductsService } from "./products.service";
 import { Device } from "./schemas/device.schema";
 import { FileInterceptor } from "@nestjs/platform-express";
+import { formDto } from "./dto/formDto";
 @Controller("products")
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
@@ -35,9 +36,9 @@ export class ProductsController {
   @Post()
   @UseInterceptors(FileInterceptor("file"))
   async postDevices(
-    @UploadedFile() image: Express.Multer.File,
-    @Body() deviceInfo
+    @UploadedFile() file: Express.Multer.File,
+    @Body() deviceInfo : formDto
   ) {
-    return this.productsService.postDevices(image,deviceInfo);
+    return this.productsService.postDevices(file, deviceInfo);
   }
 }

@@ -4,8 +4,9 @@ import { AppService } from "./app.service";
 import { ProductsModule } from "./products/products.module";
 import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule } from "@nestjs/config";
+import { S3AploadModule } from './s3-apload/s3-apload.module';
 @Module({
-  imports: [ ConfigModule.forRoot(),MongooseModule.forRoot(process.env.DB), ProductsModule],
+  imports: [ ConfigModule.forRoot(),MongooseModule.forRoot(process.env.DB), ProductsModule, S3AploadModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -2,11 +2,14 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Device } from "./schemas/device.schema";
 import { Model, Types } from "mongoose";
-import { formDto } from "./dto/formDto";
+import { S3AploadService } from "src/s3-apload/s3-apload.service";
 
 @Injectable()
 export class ProductsService {
-  constructor(@InjectModel(Device.name) private productModel: Model<Device>) {}
+  constructor(
+    @InjectModel(Device.name) private productModel: Model<Device>,
+    private readonly S3AploadService: S3AploadService
+  ) {}
 
   async findAll(): Promise<Device[]> {
     return await this.productModel.find();
@@ -49,10 +52,10 @@ export class ProductsService {
     }
   }
 
-  async postDevices(file, deviceInfo: formDto) {
+  async postDevices(file, deviceInfo) {
+    
+
     const { name, price, description, category } = deviceInfo;
-    console.log(file, deviceInfo, "all info");
-    console.log(name, "name");
     const deviceExist = await this.productModel.findOne({ name: name });
     if (deviceExist) {
       throw new HttpException(
@@ -70,6 +73,7 @@ export class ProductsService {
         availability: true,
       });
       await newDevice.save();
+      await this.S3AploadService.uploadImage(file);
       return { status: HttpStatus.OK, data: newDevice };
     } catch {
       throw new HttpException("something went wrong", HttpStatus.BAD_REQUEST);
