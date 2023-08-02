@@ -78,24 +78,27 @@ const Categories = ({
         </Typography>
       </Link>
       {headerMenuEl}
-      <HoverPopover
-        disableScrollLock={true}
-        onMouseLeave={() => handleMenuClose(setSelectedCategories, setAnchorEl)}
-        anchorEl={anchorEl}
-        open={open}
-        sx={{ marginTop: "10px" }}
-        id={open ? "simple-popover" : undefined}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        {filteredCategoriesEl}
-      </HoverPopover>
+
+      {allDevices.length && selectedCategories ?
+        <HoverPopover
+          disableScrollLock={true}
+          onMouseLeave={() => handleMenuClose(setSelectedCategories, setAnchorEl)}
+          anchorEl={anchorEl}
+          open={open}
+          sx={{ marginTop: "10px" }}
+          id={open ? "simple-popover" : undefined}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          {filteredCategoriesEl}
+        </HoverPopover>
+    : <></> }
     </>
   );
 };

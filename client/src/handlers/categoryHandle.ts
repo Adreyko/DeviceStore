@@ -4,5 +4,9 @@ export const handleCategoryChange = (
   event: SelectChangeEvent,
   setCategory: React.Dispatch<React.SetStateAction<string>>
 ) => {
-  setCategory(event.target.value as string);
+  const category = event.target.value;
+  setCategory((prev: any) => ({
+    ...prev,
+    category : category,
+  }));
 };

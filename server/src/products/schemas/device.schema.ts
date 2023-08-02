@@ -5,8 +5,6 @@ export type DeviceDocument = HydratedDocument<Device>;
 @Schema()
 export class Device {
   @Prop()
-  id: string;
-  @Prop()
   name: string;
   @Prop()
   image: string;

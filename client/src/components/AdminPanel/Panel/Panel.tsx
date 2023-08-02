@@ -9,26 +9,43 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { handleImageChange } from "@/handlers/handleImageChange";
 import { handleCategoryChange } from "@/handlers/categoryHandle";
 import { handleFormChange } from "@/handlers/formHandler";
-import { imageLoader } from "@/utils/imageloader";
+import { postProduct } from "@/api/postProduct";
+import { IDevice } from "@/interfaces/IDevices";
 
 const Panel = () => {
   const [selectedImage, setSelectedImage] = useState<File>()
   const [imagesUrl, setImagesUrl] = useState<string>()
-  const [category, setCategory] = React.useState('');
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IDevice | any>({
     name: '',
     price: '',
     description: '',
+    category: ''
   });
-  // console.log(selectedImage.name)
+
   useEffect(() => {
     if (selectedImage) {
       setImagesUrl(URL.createObjectURL(selectedImage));
     }
   }, [selectedImage])
 
-  const confirm = () => {
-    console.log(formData, category, selectedImage)
+  const confirm = async () => {
+    const data = {
+      ...formData,
+      image: selectedImage
+    }
+    try {
+      await postProduct(data)
+      setFormData({
+        name: '',
+
+        price: '',
+        description: '',
+        category: ''
+      })
+    } catch {
+      'bad format'
+    }
+
   }
 
 
@@ -43,9 +60,6 @@ const Panel = () => {
         justifyContent: "center",
       }}
     >
-      {/* <Box mt={2} textAlign="center">
-        <Image loader={() => imageLoader("airpodsmax.jpg")} src="me.png" alt='image' height={200} width={300} />
-      </Box> */}
       <Box sx={{ color: "white", background: "#1d1d1d", padding: "50px", display: "flex", flexDirection: 'column', alignItems: 'center', width: '30%' }}>
         <Typography variant="h4">Add some device</Typography>
         <input
@@ -53,7 +67,7 @@ const Panel = () => {
           type="file"
           id="select-image"
           style={{ display: "none" }}
-          onChange={(e) => handleImageChange(e, setSelectedImage as React.Dispatch<React.SetStateAction<File>>)}
+          onChange={(e) => handleImageChange(e, setSelectedImage, setFormData as any, selectedImage)}
         />
         <label htmlFor="select-image" style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
           <Button variant="contained" color="primary" component="span" >
@@ -74,9 +88,9 @@ const Panel = () => {
           fullWidth
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={category}
+          value={formData.category}
           label="Category"
-          onChange={(e) => handleCategoryChange(e, setCategory)}
+          onChange={(e) => handleCategoryChange(e, setFormData as any)}
           sx={{ color: 'white', border: '1px solid white', borderRadius: '20px' }}
         >
           <MenuItem value={"Iphones"}>Iphones</MenuItem>
@@ -86,7 +100,7 @@ const Panel = () => {
           <MenuItem value={"Other"}>Other</MenuItem>
         </Select>
         <InputLabel className={styles.label} htmlFor='name'>Description</InputLabel>
-        <Input className={styles.input} onChange={(e) => handleFormChange(e as any, setFormData as any)} value={formData.description} name='description' rows={4} multiline  fullWidth inputProps={{ sx: { color: "white" } }} />
+        <Input className={styles.input} onChange={(e) => handleFormChange(e as any, setFormData as any)} value={formData.description} name='description' rows={4} multiline fullWidth inputProps={{ sx: { color: "white" } }} />
         <Button variant="contained" color="error" component="span" fullWidth sx={{ margin: '20px' }} onClick={confirm}>
           Confirm
         </Button>
