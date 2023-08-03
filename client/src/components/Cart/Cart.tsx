@@ -43,17 +43,17 @@ const Cart: React.FC = ({ devices }: IDevice[] | any) => {
     return (
       <>
         <ComponentsContainer>
-          <Header />
+        
           <EmtyCart />
         </ComponentsContainer>
-        <Footer />
+       
       </>
     );
   }
   return (
     <>
       <ComponentsContainer>
-        <Header />
+    
         <Box
           sx={{
             background: "black",
@@ -111,7 +111,7 @@ const Cart: React.FC = ({ devices }: IDevice[] | any) => {
             </Typography>
           </Container>
         </Box>
-        <Footer />
+     
 
       </ComponentsContainer>
 

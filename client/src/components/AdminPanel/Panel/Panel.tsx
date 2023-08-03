@@ -29,6 +29,7 @@ const Panel = () => {
   }, [selectedImage])
 
   const confirm = async () => {
+
     const data = {
       ...formData,
       file: selectedImage

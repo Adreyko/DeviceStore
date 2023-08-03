@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import { useAppSelector } from "@/redux/hooks/redux-hook";

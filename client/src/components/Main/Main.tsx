@@ -15,9 +15,9 @@ const Main: React.FC = ({ devices }: IDevice[] | any) => {
 
   return (
     <>
-      <Header />
+     
       <CarouselComponent />
-      <Footer />
+  
     </>
   );
 };

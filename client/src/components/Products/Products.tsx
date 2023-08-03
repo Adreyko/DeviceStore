@@ -58,7 +58,7 @@ const Products = ({ devices }: IDevice[] | any) => {
   return (
     <>
       <ComponentsContainer>
-        <Header />
+
         <Box sx={styles.boxStyles3}>
           <Typography component="div" variant="h5" color={"white"}>
             {currentPageId.toUpperCase()}
@@ -76,7 +76,7 @@ const Products = ({ devices }: IDevice[] | any) => {
             {productEl}
           </Grid>
         </Box>
-        <Footer />
+
       </ComponentsContainer>
     </>
   );

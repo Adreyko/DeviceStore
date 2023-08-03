@@ -29,12 +29,12 @@ const DeviceDetail = ({ product }: IDevice | any) => {
   return (
     <>
       <ComponentsContainer>
-        <Header />
+
         <Box sx={styles.container}>
           <Container sx={styles.deviceContainer}>
             <Box sx={{ width: { xl: "100%", sm: "30%", md: "40%" } }}>
               <Image
-                loader={() => imageLoader(product.image)}
+                loader={() => imageLoader(product.data.image)}
                 src={`s3`}
                 alt="device"
                 height={800}
@@ -59,7 +59,7 @@ const DeviceDetail = ({ product }: IDevice | any) => {
                   variant="h6"
                   sx={styles.avaibleStyle}
                 >
-                  {product?.availability ? "Avaible" : "Soon..."}
+                  {product?.data.availability ? "Avaible" : "Soon..."}
                 </Typography>
               </Box>
               <Typography
@@ -67,9 +67,9 @@ const DeviceDetail = ({ product }: IDevice | any) => {
                 variant="h4"
                 sx={{ paddingY: "20px", borderBottom: "1px solid gray" }}
               >
-                {product?.price} $
+                {product?.data.price} $
               </Typography>
-              {product?.category === "iphones" || "accessory" ? (
+              {product?.data.category === "iphones" || "accessory" ? (
                 <Typography
                   component="div"
                   variant="h5"
@@ -103,12 +103,11 @@ const DeviceDetail = ({ product }: IDevice | any) => {
                 variant="h6"
                 sx={{ paddingY: "20px", borderBottom: "1px solid gray" }}
               >
-                {product?.description}
+                {product?.data.description}
               </Typography>
             </Box>
           </Container>
         </Box>
-        <Footer />
       </ComponentsContainer>
     </>
   );
